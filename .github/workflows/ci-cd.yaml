@@ -46,4 +46,4 @@ jobs:
 
         # cd /home/ubuntu/TESTING_api
         # # Run Flask apps
-        nohup python testing.py &
+        nohup python3 testing.py &
