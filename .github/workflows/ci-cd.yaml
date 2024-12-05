@@ -37,5 +37,5 @@ jobs:
           conda activate base
           nohup python testing.py &
 EOF
-      # Clean up local key file
+      # Clean up local key files
         rm ec2_key.pem
