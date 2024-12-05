@@ -45,5 +45,5 @@ jobs:
           # Run flask app
           nohup python testing.py &
 EOF
-      # Clean up local key files
+      # Clean up local key file
         rm ec2_key.pem
