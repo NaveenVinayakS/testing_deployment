@@ -36,7 +36,6 @@ jobs:
         cd /home/$EC2_USER/TESTING_api
         
         # Load conda environment
-        source ~/.bashrc
         conda activate base
         # Run Flask apps
         nohup python testing.py &
