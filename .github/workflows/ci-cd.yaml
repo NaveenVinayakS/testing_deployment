@@ -47,6 +47,7 @@ jobs:
         pwd
         cd /home/ubuntu/TESTING_api
         pwd
+        source /home/ubuntu/anaconda3/etc/profile.d/conda.sh
         conda activate base
         # Run Flask apps
         nohup python3 testing.py &
