@@ -27,23 +27,20 @@ jobs:
         echo "$EC2_KEY" > ec2_key.pem
         chmod 600 ec2_key.pem
 
-      # Create folder on EC2 server and copy application files
+        # Create folder on EC2 server and copy application files
         ssh -i ec2_key.pem $EC2_USER@$EC2_HOST "mkdir -p /home/$EC2_USER/TESTING_api"
         scp -i ec2_key.pem -r ./* $EC2_USER@$EC2_HOST:/home/$EC2_USER/TESTING_api
 
-      # Copy application files to the EC2 server
-      # scp -i ec2_key.pem -r ./* $EC2_USER@$EC2_HOST:/home/$EC2_USER/app
-
-      # SSH into EC2 server and activate base environment before running Flask app
+        # SSH into EC2 server and activate base environment before running Flask app
         ssh -i ec2_key.pem $EC2_USER@$EC2_HOST << 'EOF'
           cd /home/$EC2_USER/TESTING_api
           
-          
           # Load conda environment
+          source ~/.bashrc
           conda activate base
 
-          # Run flask app
+          # Run Flask app
           nohup python testing.py &
 EOF
-      # Clean up local key file
+        # Clean up local key files
         rm ec2_key.pem
