@@ -35,7 +35,7 @@ jobs:
         
         # SSH into EC2 server and activate base environment before running Flask app
         ssh -o StrictHostKeyChecking=no -i AI-Banks.pem -p 1613 $EC2_USER@$EC2_HOST << 'EOF'
-        cd /home/ubuntu/TESTING_api
+        
         
         # Load conda environment
         source ~/.bashrc
@@ -43,6 +43,6 @@ jobs:
 
         python --version
 
-
+        cd /home/ubuntu/TESTING_api
         # Run Flask apps
         nohup python testing.py &
