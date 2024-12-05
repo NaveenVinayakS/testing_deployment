@@ -25,9 +25,9 @@ jobs:
         EC2_KEY: ${{ secrets.EC2_KEY }}
       run: |
         echo "$EC2_KEY" > AI-Banks.pem
-        chmod 400 AI-Banks.pem
+        chmod 600 AI-Banks.pem
         
-        # Create folder on EC2 server and copy application files
+        # Create folder on EC2 server and copy application file
         ssh -i AI-Banks.pem -p 1613 $EC2_USER@$EC2_HOST "mkdir -p /home/$EC2_USER/TESTING_api"
         scp -i AI-Banks.pem -p 1613 -r ./* $EC2_USER@$EC2_HOST:/home/$EC2_USER/TESTING_api
         
