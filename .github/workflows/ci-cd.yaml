@@ -33,14 +33,14 @@ jobs:
 
         # SSH into EC2 server and activate base environment before running Flask app
         ssh -i ec2_key.pem $EC2_USER@$EC2_HOST << 'EOF'
-          cd /home/$EC2_USER/TESTING_api
-          
-          # Load conda environment
-          source ~/.bashrc
-          conda activate base
+        cd /home/$EC2_USER/TESTING_api
+        
+        # Load conda environment
+        source ~/.bashrc
+        conda activate base
 
-          # Run Flask app
-          nohup python testing.py &
+        # Run Flask app
+        nohup python testing.py &
 EOF
         # Clean up local key files
         rm ec2_key.pem
