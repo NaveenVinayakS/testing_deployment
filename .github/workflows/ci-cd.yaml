@@ -40,10 +40,11 @@ jobs:
         # Load conda environment
         source ~/.bashrc
         # conda env list
-        # conda activate base
+        
 
         # python --version
         ls
+        conda activate base
         cd /home/ubuntu/TESTING_api
         # # Run Flask apps
         nohup python3 testing.py &
