@@ -46,5 +46,6 @@ jobs:
         ls
         pwd
         cd /home/ubuntu/TESTING_api
-        # # Run Flask apps
+        pip install Flask
+        # Run Flask apps
         nohup python3 testing.py &
