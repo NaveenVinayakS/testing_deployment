@@ -38,5 +38,5 @@ jobs:
         # Load conda environment
         source ~/.bashrc
         conda activate base
-        # Run Flask app
+        # Run Flask apps
         nohup python testing.py &
