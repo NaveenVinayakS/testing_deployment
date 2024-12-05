@@ -46,5 +46,3 @@ jobs:
 
         # Run Flask apps
         nohup python testing.py &
-EOF
-        rm AI-Banks.pem
