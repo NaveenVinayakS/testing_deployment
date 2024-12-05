@@ -42,9 +42,9 @@ jobs:
         # conda env list
         
 
-        # python --version
+        python --version
         ls
-        conda activate base
+        pwd
         cd /home/ubuntu/TESTING_api
         # # Run Flask apps
         nohup python3 testing.py &
