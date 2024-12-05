@@ -40,7 +40,3 @@ jobs:
         conda activate base
         # Run Flask app
         nohup python testing.py &
-EOF
-        
-        # Remove the EC2 key for security
-        rm ec2_key.pem
