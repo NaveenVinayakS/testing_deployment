@@ -26,13 +26,15 @@ jobs:
       run: |
         echo "$EC2_KEY" > AI-Banks.pem
         chmod 600 AI-Banks.pem
+        # Test SSH connectivity with disabled strict host key checking
+        ssh -o StrictHostKeyChecking=no -i ec2_key.pem -p 1613 $EC2_USER@$EC2_HOST "echo 'SSH connection successful'"
         
         # Create folder on EC2 server and copy application file
-        ssh -i AI-Banks.pem -p 1613 $EC2_USER@$EC2_HOST "mkdir -p /home/$EC2_USER/TESTING_api"
-        scp -i AI-Banks.pem -p 1613 -r ./* $EC2_USER@$EC2_HOST:/home/$EC2_USER/TESTING_api
+        ssh -o StrictHostKeyChecking=no  -i AI-Banks.pem -p 1613 $EC2_USER@$EC2_HOST "mkdir -p /home/$EC2_USER/TESTING_api"
+        scp -o StrictHostKeyChecking=no  -i AI-Banks.pem -p 1613 -r ./* $EC2_USER@$EC2_HOST:/home/$EC2_USER/TESTING_api
         
         # SSH into EC2 server and activate base environment before running Flask app
-        ssh -i AI-Banks.pem -p 1613 $EC2_USER@$EC2_HOST << 'EOF'
+        ssh -o StrictHostKeyChecking=no  -i AI-Banks.pem -p 1613 $EC2_USER@$EC2_HOST << 'EOF'
         cd /home/$EC2_USER/TESTING_api
         
         # Load conda environment
