@@ -31,7 +31,7 @@ jobs:
 
         ssh -i ec2_key.pem $EC2_USER@$EC2_HOST << 'EOF'
           cd /home/$EC2_USER/app
-          nohup python3 testing.py &
+          nohup python testing.py &
 EOF
 
         rm ec2_key.pem
