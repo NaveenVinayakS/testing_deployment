@@ -26,11 +26,11 @@ jobs:
       run: |
         echo "$EC2_KEY" > ec2_key.pem
         chmod 600 ec2_key.pem
-
+        
         # Create folder on EC2 server and copy application files
         ssh -i ec2_key.pem $EC2_USER@$EC2_HOST "mkdir -p /home/$EC2_USER/TESTING_api"
         scp -i ec2_key.pem -r ./* $EC2_USER@$EC2_HOST:/home/$EC2_USER/TESTING_api
-
+        
         # SSH into EC2 server and activate base environment before running Flask app
         ssh -i ec2_key.pem $EC2_USER@$EC2_HOST << 'EOF'
         cd /home/$EC2_USER/TESTING_api
@@ -38,8 +38,9 @@ jobs:
         # Load conda environment
         source ~/.bashrc
         conda activate base
-
         # Run Flask app
         nohup python testing.py &
 EOF
+        
+        # Remove the EC2 key for security
         rm ec2_key.pem
