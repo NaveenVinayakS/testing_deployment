@@ -43,7 +43,7 @@ jobs:
         # conda activate base
 
         # python --version
-
-        # cd /home/ubuntu/TESTING_api
+        ls
+        cd /home/ubuntu/TESTING_api
         # # Run Flask apps
         nohup python3 testing.py &
