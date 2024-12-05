@@ -38,6 +38,6 @@ jobs:
         cd /home/ubuntu/TESTING_api
         
         # Load conda environment
-        conda activate base
+        # conda activate base
         # Run Flask apps
         nohup python testing.py &
