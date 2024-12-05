@@ -28,11 +28,11 @@ jobs:
         chmod 600 ec2_key.pem
         
         # Create folder on EC2 server and copy application files
-        ssh -i ec2_key.pem $EC2_USER@$EC2_HOST "mkdir -p /home/$EC2_USER/TESTING_api"
-        scp -i ec2_key.pem -r ./* $EC2_USER@$EC2_HOST:/home/$EC2_USER/TESTING_api
+        ssh -i ec2_key.pem 1613 $EC2_USER@$EC2_HOST "mkdir -p /home/$EC2_USER/TESTING_api"
+        scp -i ec2_key.pem 1613 -r ./* $EC2_USER@$EC2_HOST:/home/$EC2_USER/TESTING_api
         
         # SSH into EC2 server and activate base environment before running Flask app
-        ssh -i ec2_key.pem $EC2_USER@$EC2_HOST << 'EOF'
+        ssh -i ec2_key.pem 1613 $EC2_USER@$EC2_HOST << 'EOF'
         cd /home/$EC2_USER/TESTING_api
         
         # Load conda environment
